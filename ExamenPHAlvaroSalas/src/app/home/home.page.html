@@ -1,0 +1,31 @@
+<!-- Contenedor para el título y el botón -->
+<div class="header-container">
+  <ion-title class="titulo-publicaciones">Publicaciones</ion-title>
+  <ion-button (click)="abrirModalCreacion()" class="btn-nueva-publicacion">Nueva publicación</ion-button>
+</div>
+
+<!-- Lista de publicaciones con scroll -->
+<ion-list class="fila-publicaciones scrollable-list">
+  <ion-item *ngFor="let publicacion of publicaciones">
+    <!-- Imagen de la publicación -->
+    <ion-img [src]="publicacion.imagen" alt="Imagen de la publicación" class="imagen-publicacion"></ion-img>
+    
+    <!-- Contenido de la publicación -->
+    <div class="contenido-publicacion">
+      <h2>{{ publicacion.titulo }}</h2>
+      <p>{{ publicacion.descripcion }}</p>
+      <p class="fecha-publicacion">Publicado el: {{ publicacion.fecha | date: 'dd/MM/yyyy HH:mm' }}</p>
+
+      <!-- Botón para eliminar una publicación -->
+      <ion-button class="boton-eliminar" (click)="abrirModalEliminacion(publicacion)">Eliminar</ion-button>
+    </div>
+  </ion-item>
+</ion-list>
+
+<!-- Modal para eliminar publicación -->
+<app-eliminacion-publicacion 
+  *ngIf="mostrarModal" 
+  [publicacionAEliminar]="publicacionAEliminar" 
+  (confirmDelete)="confirmarEliminacion()" 
+  (cancelDelete)="cancelarEliminacion()">
+</app-eliminacion-publicacion>

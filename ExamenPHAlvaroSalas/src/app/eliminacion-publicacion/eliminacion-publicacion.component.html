@@ -1,0 +1,10 @@
+<div class="modal-backdrop">
+  <div class="modal-content">
+    <h3>¿Estás seguro que deseas eliminar esta publicación?</h3>
+    <p>{{ publicacionAEliminar?.titulo }}</p> 
+    <div class="modal-actions">
+      <ion-button color="danger" (click)="confirmarEliminacion()">Eliminar</ion-button>
+      <ion-button (click)="cancelarEliminacion()">Cancelar</ion-button>
+    </div>
+  </div>
+</div>

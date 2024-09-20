@@ -1,0 +1,51 @@
+<div class="modal-backdrop">
+  <div class="modal-content">
+    <h2>Nueva Publicación</h2>
+
+    <form [formGroup]="formPublicacion" (ngSubmit)="guardarPublicacion()">
+      <!-- Título -->
+      <mat-form-field appearance="fill">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="titulo" placeholder="Escribe un título">
+        <mat-error *ngIf="formPublicacion.get('titulo')?.hasError('required')">El título es obligatorio.</mat-error>
+        <mat-error *ngIf="formPublicacion.get('titulo')?.hasError('minlength')">El título debe tener al menos 5 caracteres.</mat-error>
+      </mat-form-field>
+
+      <!-- Descripción -->
+      <mat-form-field appearance="fill">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="descripcion" placeholder="Escribe una descripción"></textarea>
+        <mat-error *ngIf="formPublicacion.get('descripcion')?.hasError('required')">La descripción es obligatoria.</mat-error>
+        <mat-error *ngIf="formPublicacion.get('descripcion')?.hasError('minlength')">La descripción debe tener al menos 20 caracteres.</mat-error>
+      </mat-form-field>
+
+      <!-- seleccionar imagen -->
+      <input type="file" (change)="onFileChange($event)">
+      <mat-error *ngIf="!imagenSeleccionada">Es obligatorio insertar una imagen.</mat-error>
+      
+      <!-- Vista previa de la imagen -->
+      <div *ngIf="imagenSeleccionada">
+        <h3>Vista previa de la imagen</h3>
+        <img [src]="imagenSeleccionada" alt="Vista previa de la imagen" class="preview-image">
+      </div>
+
+      <!-- Campo de Fecha y Hora solo lectura -->
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de Publicación</mat-label>
+        <input matInput formControlName="fecha" readonly [value]="fechaActual | date: 'dd/MM/yyyy HH:mm'">
+      </mat-form-field>
+
+ <!-- Sección de la cámara -->
+ <div class="camera-container">
+  <video #videoElement width="320" height="240" autoplay></video>
+  <button mat-button type="button" (click)="iniciarCamara()">Iniciar Cámara</button>
+  <button mat-button type="button" (click)="capturarFoto()">Tomar Foto</button>
+</div>
+
+
+      <!-- Botones -->
+      <button type="submit">Guardar Publicación</button>
+      <button type="button" (click)="cancelar()">Cancelar</button>
+    </form>
+  </div>
+</div>

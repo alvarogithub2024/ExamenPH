@@ -1,0 +1,78 @@
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 90%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; 
+  max-height: 80vh; 
+}
+
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  color: #000; 
+  margin-bottom: 20px;
+  text-align: center; 
+}
+
+
+mat-form-field {
+  width: 100%;
+  margin-top: 10px;
+}
+
+input, textarea {
+  font-size: 1rem;
+}
+
+mat-label {
+  font-size: 1.1rem;
+}
+
+
+button {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%; 
+  margin-top: 10px; 
+}
+
+button[mat-raised-button] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button[mat-button] {
+  background-color: #f44336;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+
+.preview-image {
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+  border-radius: 5px;
+}
